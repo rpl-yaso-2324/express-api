@@ -1,5 +1,5 @@
 //require connection
-const connection = requite("../config/database");
+const connection = require("../config/database");
 
 //function index posts
 const index = (req, res) => {
@@ -18,4 +18,8 @@ const index = (req, res) => {
             })
         }
     });
+};
+
+module.exports = {
+	index
 };
