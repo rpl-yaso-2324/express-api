@@ -15,3 +15,5 @@ return res.status(200).json({
     message: 'List Data Posts',
     data: rows	
 })
+
+module.exports = {index};
