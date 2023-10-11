@@ -13,5 +13,5 @@ const postsRouter = require('./routes/postsRoutes');
 app.use('/api/posts', postsRouter);
 
 app.listen(port, () => {
-    console.log(`app running at http://localhost:${port}`);
+    console.log(`berjalan di http://localhost:${port}`);
 });
