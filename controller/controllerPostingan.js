@@ -1,5 +1,8 @@
 //import database
+const { Router } = require('express');
 const connection = require('../config/database');
+
+
 
 const index = (req , res ) => {
     //query
@@ -18,5 +21,22 @@ const index = (req , res ) => {
         }
     });
 };
+  
+   const tambahanpostingan = (req , res) => {
 
-module.exports = {index}; 
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.status(422).json({
+            errors: errors.array()
+        });
+    }
+
+    //define formData
+    let formData = {
+        title: req.body.title,
+        content: req.body.content
+    }
+}
+
+module.exports = {index, tambahanpostingan}; 
