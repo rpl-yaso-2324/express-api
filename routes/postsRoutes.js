@@ -41,7 +41,7 @@ const tambahPostingan = [
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
-        res.status(200).json({ message: 'selamat postingan berhasil' });
+        res.status(200).json({ message: 'selamat postingannya berhasil' });
     }
 ];
 router.get('/', index);
