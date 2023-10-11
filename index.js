@@ -4,7 +4,19 @@ const port = 3000;
 
 //import route posts
 const postsRouter = require('./routes/postsRoutes');
+const { body } = require("express-validator");
 app.use('/api/posts', postsRouter); // use route posts di Express
+
+//parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json())
+
+//import route posts
+const postsRouter = require('./routes/posts');
+app.use('/api/posts', postsRouter); // use route posts di Express
+
 
 
 app.listen(port, () => {
