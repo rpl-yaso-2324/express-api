@@ -21,4 +21,22 @@ const index = (req, res) => {
     });
 }
 
-module.exports = { index };
+const store = (req, res) => {
+    connection.query('SELECT * FROM buku ORDER BY id desc', 
+    function (err, rows) {
+        if (err) {
+            return res.status(500).json({
+                status: false,
+                message: 'Kamu Salah',
+            })
+        } else {
+            return res.status(200).json({
+                status: true,
+                message: 'Kamu Benar di tabel',
+                data: rows
+            })
+        }
+    });
+}
+
+module.exports = { index, store };
