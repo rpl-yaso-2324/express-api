@@ -1,6 +1,9 @@
 //require connection
 const connection = require("../config/database");
 
+//import express validator
+const {validationResult} = require('express-validator');
+
 //function index posts
 const index = (req, res) => {
     //query
@@ -21,12 +24,16 @@ const index = (req, res) => {
     });
 };
 
-//import express validator
-const {validationResult} = require('express-validator');
-
 //function tambah postingan
+function tambahPostingan(req, res){
+    const errors = validationResult(req);
 
- 
+    if (!errors.isEmpty()) {
+        return res.status(422).json({
+            errors: errors.array()
+        });
+    }
+}
 
  //define formData
  let formData = {

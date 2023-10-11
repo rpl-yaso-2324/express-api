@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {index} = require("../controller/controllerPostingan")
+const {index, tambahPostingan} = require("../controller/controllerPostingan")
 
 //import express validator
 const {body} = require("express-validator");
