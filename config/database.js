@@ -13,6 +13,6 @@ connection.connect(function(error){
    }else{
      console.log('Connection Succuessfully!');
    }
- })
+ });
 
 module.exports = connection; 
