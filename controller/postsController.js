@@ -10,7 +10,7 @@ const index = (req, res) => {
 			if (err) {
 				return res.status(500).json({
 					status: false,
-					message: "Internal Server Error",
+					message: "Internal Server Errorr",
 				});
 			} else {
 				return res.status(200).json({
