@@ -20,4 +20,4 @@ app.use('/api/posts', postsRouter); // use route posts di Express
 
 app.listen(port, () => {
   console.log(`maju bang http://localhost:${port}`)
-})
+});
