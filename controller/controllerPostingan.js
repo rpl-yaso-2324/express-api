@@ -13,6 +13,7 @@ const index = (req, res) => {
             return res.status(500).json({
                 status: false,
                 message: 'Internal Server Error',
+                error: err,
             })
         } else {
             return res.status(200).json({
@@ -25,7 +26,7 @@ const index = (req, res) => {
 };
 
 //function tambah postingan
-function tambahPostingan(req, res){
+(req, res) => {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
@@ -36,13 +37,13 @@ function tambahPostingan(req, res){
 }
 
  //define formData
- let formData = {
+ let tambahData = {
     title: req.body.title,
     content: req.body.content
 }
 
 // insert query
-connection.query('INSERT INTO postingan SET ?', formData, function (err, rows) {
+connection.query('INSERT INTO postingan SET ?', tambahData, function (err, rows) {
     //if(err) throw err
     if (err) {
         return res.status(500).json({
@@ -59,5 +60,5 @@ connection.query('INSERT INTO postingan SET ?', formData, function (err, rows) {
 });
 
 module.exports = {
-	index, tambahPostingan
+	index, tambahData
 };
