@@ -19,4 +19,4 @@ connection.query('SELECT * FROM posts ORDER BY id desc', function (err, rows) {
 }
 
 
-module.exports = (index);
+module.exports = {index};
