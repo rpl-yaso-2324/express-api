@@ -8,8 +8,8 @@ router.post(
     "/tambahPostingan", 
     [
     // validation
-    body("Judul").notEmpty(),
-    body("Genre").notEmpty(),
+    body("Title").notEmpty(),
+    body("Content").notEmpty(),
 ], 
 tambahPostingan
 );

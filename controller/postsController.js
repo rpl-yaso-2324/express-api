@@ -16,7 +16,7 @@ const index = ('/', function (req, res) {
         } else {
             return res.status(200).json({
                 status: true,
-                message: 'selamat anda mendapatkan kebenaran di tabel posts',
+                message: 'Anda melakukannya dengan baik sehingga dapat mengakses tabel Posts',
                 data: rows
             })
         }
