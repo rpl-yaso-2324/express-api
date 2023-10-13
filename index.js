@@ -16,6 +16,6 @@ const routePostingan = require('./routes/routePostingan');
 app.use('/api/posts', routePostingan); // use route posts di Express
 
 app.listen(port, () => {
-  console.log(`nih express nya liat aja disini=> http://localhost:${port}`)
+  console.log(`nih express nya liat aja disini => http://localhost:${port}`)
 })
 
