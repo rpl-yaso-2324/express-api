@@ -20,10 +20,14 @@ return res.status(200).json({
 }
 });
 }
+const tambahPostingan = (req, res) => {
 //define formData
 let formData = {
     title: req.body.title,
     content: req.body.content
+}
+
+res.status(200).json({ message: 'Postingan berhasil ditambahkan' });
 }
 
 module.exports = {index, tambahPostingan};
