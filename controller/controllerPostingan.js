@@ -26,24 +26,23 @@ const index = (req, res) => {
 };
 
 //function tambah postingan
-(req, res) => {
+const tambahPostingan = (req, res) => {
     const errors = validationResult(req);
 
-    if (!errors.isEmpty()) {
+    if (!!errors.isEmpty()) {
         return res.status(422).json({
             errors: errors.array()
         });
     }
-}
 
- //define formData
- let tambahData = {
+    //define formData
+ let formData = {
     title: req.body.title,
     content: req.body.content
 }
 
 // insert query
-connection.query('INSERT INTO postingan SET ?', tambahData, function (err, rows) {
+connection.query('INSERT INTO postingan SET ?', formData, function (err, rows) {
     //if(err) throw err
     if (err) {
         return res.status(500).json({
@@ -58,7 +57,10 @@ connection.query('INSERT INTO postingan SET ?', tambahData, function (err, rows)
         })
     }
 });
+}
+
+ 
 
 module.exports = {
-	index, tambahData
+	index, tambahPostingan
 };
