@@ -32,5 +32,5 @@ const routePostingan = require("./routes/routePostingan");
 app.use("/api/posts", routePostingan); // use route posts di Express
 
 app.listen(port, () => {
-  console.log(`app running at http://localhost:${port}`);
+  console.log(`Jika Error mungkin lupa mengaktifkan XAMPP!! app running at http://localhost:${port}`);
 });
