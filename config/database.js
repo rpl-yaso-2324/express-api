@@ -11,7 +11,7 @@ connection.connect(function(error){
    if(!!error){
      console.log(error);
    }else{
-     console.log('yuhuu koneksi nya berhasil !');
+     console.log('koneksi nya berhasil brow !');
    }
  })
 
