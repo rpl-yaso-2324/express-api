@@ -1,25 +1,25 @@
 const connection = require("../config/database")
-const { body, validationResult } = require('express-validator');
+const { validationResult } = require('express-validator');
 
-
-const index = (req, res)=> {
+const index = ('/', function (req, res) {
+    //query
     connection.query('SELECT * FROM posts ORDER BY id desc', function (err, rows) {
         if (err) {
-            return res.status(600).json({
+            return res.status(500).json({
                 status: false,
-                message: 'kamu salah',
+                message: 'Internal Server Error',
             })
         } else {
-            return res.status(900).json({
+            return res.status(200).json({
                 status: true,
                 message: 'List Data Posts',
-                data: rows [0]
+                data: rows
             })
         }
     });
-}
+});
 
-function tambahData(req, res) => {
+function tambahData(req, res) {
 
     const validationReq = validationResult(req);
 
@@ -29,6 +29,7 @@ function tambahData(req, res) => {
         });
     }
 
+    //define formData
     let formData = {
         title: req.body.title,
         content: req.body.content
@@ -54,4 +55,4 @@ function tambahData(req, res) => {
 };
 
 
-module.exports = {index, tambahData} ;
+module.exports = { index, tambahData };

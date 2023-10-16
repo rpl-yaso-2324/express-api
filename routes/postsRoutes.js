@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { index } = require("../controller/postsController")
-const { body, validationResult } = require('express-validator');
+const { index, tambahData } = require("../controller/postsController")
+const { body } = require('express-validator');
 
 router.get("/", index)
 router.post(
@@ -11,6 +11,7 @@ router.post(
        body("title").notEmpty(),
        body("content").notEmpty()
    ],
+   tambahData
 );
 
 

@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 const postsRouter = require('./routes/postsRoutes');
-app.use('/api/posts', postsRouter); 
+app.use('/posts', postsRouter); 
 
 app.listen(port, () => {
 	console.log(`app running at http://localhost:${port}`);
