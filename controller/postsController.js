@@ -24,7 +24,7 @@ const index = ('/', function (req, res) {
 })
 
 /**
- * STORE POST
+ * MENAMBAH POSTINGAN
  */
 function tambahPostingan (req, res) {
 

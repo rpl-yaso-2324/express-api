@@ -18,6 +18,12 @@ app.get("/", (req, res) => {
   res.send(responseHTML);
 });
 
+//import library CORS
+const cors = require('cors')
+
+//use cors
+app.use(cors())
+
 //import body parser
 const bodyParser = require('body-parser')
 
