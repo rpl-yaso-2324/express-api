@@ -1,11 +1,15 @@
-const express = require("express");
-const app = express();
-const port = 3000;
+const { body } = require("express-validator")
+const express = require('express');
+const router = express.Router();
+const { index } = require("../controller/controllerPostingan")
 
-app.get("/", (req, res) => {
-	res.send("Hello World!");
-});
-
-app.listen(port, () => {
-	console.log(`app running at http://localhost:${port}`);
-});
+router.get("/", index)
+router.post(
+    "/tambahPostingan",
+    [
+        //validation
+        body("title").notEmpty(),
+        body("content").notEmpty(),
+    ],
+);
+module.exports = router;
