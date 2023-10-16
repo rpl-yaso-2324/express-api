@@ -3,32 +3,30 @@ const connection = require("../config/database");
 //import express validator
 const { validationResult } = require("express-validator");
 
-const index =
-	("/",
-	function (req, res) {
-		connection.query(
-			"SELECT * FROM postingan ORDER BY id desc",
-			function (err, rows) {
-				if (err) {
-					return res.status(500).json({
-						status: false,
-						message: "Internal Server Errorr",
-					});
-				} else {
-					return res.status(200).json({
-						status: true,
-						message: "List Data Posts",
-						data: rows,
-					});
-				}
+const index = (req, res) => {
+	connection.query(
+		"SELECT * FROM postingan ORDER BY id desc",
+		function (err, rows) {
+			if (err) {
+				return res.status(500).json({
+					status: false,
+					message: "Internal Server Errorr",
+				});
+			} else {
+				return res.status(200).json({
+					status: true,
+					message: "List Data Posts",
+					data: rows,
+				});
 			}
-		);
-	});
+		}
+	);
+};
 
 /**
  * STORE POST
  */
-function store(req, res) {
+const store = (req, res) => {
 	const validationReq = validationResult(req);
 
 	if (!validationReq.isEmpty()) {
@@ -63,6 +61,6 @@ function store(req, res) {
 			}
 		}
 	);
-}
+};
 
 module.exports = { index, store };
