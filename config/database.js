@@ -9,9 +9,9 @@ let connection = mysql.createConnection({
 
 connection.connect(function(error){
    if(!!error){
-     console.log(error);
+     console.log(error, "Jika error mungkin lupa mengaktifkan XAMPP");
    }else{
-     console.log('Kamu berhasil bukan aku');
+     console.log('Sucsessfully');
    }
  })
 
