@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
+app.use(bodyParser.json());
 
 //import route posts
 const postsRouter = require("./routes/postsRouter");
