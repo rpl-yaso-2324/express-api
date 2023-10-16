@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {index, tambahPostingan} = require("../Controller/postsController");
+const {index, tambahPosts, tampilkanDetail} = require("../Controller/postsController");
 
 const {body} = require('express-validator');
 
@@ -10,9 +10,9 @@ router.post('/store', [
    //validation
    body('title').notEmpty(),
    body('content').notEmpty()
-
 ],
-tambahPostingan
+
 );
+router.get('/(:id)', tampilkanDetail);
 
 module.exports = router;

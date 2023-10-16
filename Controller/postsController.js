@@ -1,3 +1,6 @@
+//import express validator
+const { validationResult } = require('express-validator');
+
 //import database
 var connection = require('../config/database');
 
@@ -21,7 +24,9 @@ return res.status(200).json({
 });
 }
 
-const tambahPostingan = (req, res) => {
+
+
+const tambahPosts = (req, res) => {
 
     const errors = validationResult(req);
 
@@ -56,5 +61,35 @@ connection.query('INSERT INTO posts SET ?', formData, function (err, rows) {
 
 };
 
+function tampilkanDetail(req, res) {
 
-module.exports = {index, tambahPostingan};
+    let id = req.params.id;
+
+    connection.query(`SELECT * FROM posts WHERE id = ${id}`, function (err, rows) {
+
+        if (err) {
+            return res.status(500).json({
+                status: false,
+                message: 'Internal Server Error',
+            })
+        }
+
+        // if post not found
+        if (rows.length <= 0) {
+            return res.status(404).json({
+                status: false,
+                message: 'Data Post Not Found!',
+            })
+        }
+        // if post found
+        else {
+            return res.status(200).json({
+                status: true,
+                message: 'Detail Data Post',
+                data: rows[0]
+            })
+        }
+    })
+}
+
+module.exports = {index, tambahPosts, tampilkanDetail};
