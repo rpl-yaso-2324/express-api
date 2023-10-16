@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3300
+const port = 3000
 
 //import route posts
 const postsRouter = require('./routes/posts');
