@@ -8,3 +8,4 @@ app.use('/api/posts', postsRouter);
 app.listen(port, () => {
 	console.log(`app running at http://localhost:${port}`);
 });
+   
