@@ -1,6 +1,10 @@
 //require controler
 const connection = require ("../config/database");
 
+
+//import express validator
+const { body, validationResult } = require('express-validator');
+
 const index = (req, res) => {
     connection.query('SELECT * FROM posts ORDER BY id desc', 
     function (err, rows) {
