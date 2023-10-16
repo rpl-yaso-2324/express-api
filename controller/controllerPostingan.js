@@ -53,4 +53,4 @@ if (!errors.isEmpty()) {
 };
 
 
-module.exports = {index , tambahPostingan};
+module.exports = index;
