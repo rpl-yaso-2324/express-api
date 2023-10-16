@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const { index } = require("../controller/controllerPostingan")
 
-router.get("/", index)
+router.get("/", index) 
 router.post(
     "/tambahPostingan",
     [
