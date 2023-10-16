@@ -37,7 +37,7 @@ function tambahPostingan(req, res) {
 
 	//define formData
 	let formData = {
-		tittle: req.body.tittle,
+		title: req.body.title,
 		content: req.body.content,
 	};
 
