@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {index, tambahPostingan} = require("../controller/controllerPostingan")
+const {index, tambahPostingan, tampilkanDetail} = require("../controller/controllerPostingan")
 
 //import express validator
 const {body} = require("express-validator");
@@ -15,5 +15,6 @@ router.post(
     ],
    tambahPostingan
    );
+   router.get("/(:id)", tampilkanDetail);
 
 module.exports = router;
