@@ -1,6 +1,9 @@
 const { body } = require("express-validator")
+const express = require('express');
+const router = express.Router();
+const { index } = require("../controller/controllerPostingan")
 
-router.get("/", index);
+router.get("/", index)
 router.post(
     "/tambahPostingan",
     [
@@ -9,5 +12,4 @@ router.post(
         body("content").notEmpty(),
     ],
 );
-
 module.exports = router;
