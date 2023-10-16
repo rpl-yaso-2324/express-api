@@ -1,9 +1,9 @@
 const connection = require("../config/database");
 
 //import express validator
-// const { validationResult } = require("express-validator");
+const { validationResult } = require("express-validator");
 
-const index = (req, res) => {
+const index = ('/', function (req, res) {
 	connection.query(
 		"SELECT * FROM posts ORDER BY id desc",
 		function (err, rows) {
@@ -16,17 +16,18 @@ const index = (req, res) => {
 				return res.status(200).json({
 					status: true,
 					message: "List Data Posts",
-					data: rows,
+					data: rows
 				});
 			}
 		}
 	);
-};
+} );
 
 /**
  * STORE POST
  */
 function tambahPostingan(req, res) {
+
 	const validationReq = validationResult(req);
 
 	if (!validationReq.isEmpty()) {

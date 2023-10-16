@@ -5,7 +5,7 @@ const { body } = require("express-validator");
 
 router.get("/", index);
 router.post(
-	"/tambahpostingan",
+	"/tambahPostingan",
 	[
 		//validator
 		body("title").notEmpty(),
