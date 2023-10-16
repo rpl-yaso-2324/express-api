@@ -17,5 +17,6 @@ body('content'),notEmpty(),
 ],
 tambahPostingan
 );
+router.get("/:id"),
 
 module.exports =  router;
