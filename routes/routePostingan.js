@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {index, tambahPostingan} = require("../controller/controllerPostingan")
 
-//import express validator
+//import express-validator
 const {body} = require("express-validator");
 
 router.get("/",index);
