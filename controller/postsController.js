@@ -10,7 +10,7 @@ const index = (req,res) =>
             "SELECT * FROM posts ORDER BY id desc", 
             function (err, rows) {
             if (err) {
-                return res.status(500).json({
+                return res.status(500).json({  
                     status: false,
                     message: 'Internal Server Error',
                 })

@@ -5,7 +5,7 @@ let connection = mysql.createConnection({
    user:        'root',
    password:    '',
    database:    'db_express_api'
- });
+ });  
 
 connection.connect(function(error){
    if(!!error){

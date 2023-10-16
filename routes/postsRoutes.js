@@ -4,4 +4,4 @@ const {index} = require("../controller/postsController")
 
 router.get("/", index)
 
-module.exports= router;
+module.exports= router;    
