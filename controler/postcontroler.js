@@ -3,6 +3,7 @@
 const conection = require ("../config/database");
 //import express validator
 const { body, validationResult } = require('express-validator'); 
+
 //function index posts
 function index  (req , res ) {
   //query
