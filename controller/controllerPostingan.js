@@ -3,7 +3,7 @@ const connection = require("../config/database")
 
 //function index posts
 const index = (req, res) => {
-    //query
+    //query 
     connection.query('SELECT * FROM posts ORDER BY id desc', 
     function (err, rows) {
         if (err) {
@@ -37,6 +37,10 @@ const store = (req, res) => {
             })
         }
     });
+}
+
+function tampilankanDetail(req, res) {
+    let id = req
 }
 
 module.exports = { index, store };

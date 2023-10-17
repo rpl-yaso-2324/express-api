@@ -10,6 +10,6 @@ router.post(
         //validation
         body("title").notEmpty(),
         body("content").notEmpty(),
-    ],
+    ], 
 );
 module.exports = router;
