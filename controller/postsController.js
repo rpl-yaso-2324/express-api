@@ -1,6 +1,6 @@
 // require connection
 const connection = require("../config/database");
-
+  
 //import express validator
 const { validationResult } = require('express-validator');
 
