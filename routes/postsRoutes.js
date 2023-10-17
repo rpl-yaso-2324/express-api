@@ -1,8 +1,24 @@
 const express = require('express');
 const router = express.Router();
-const {index} = require("../controller/postsController")
+const { index, tambahPosts, tampilkanDetail } = require("../controller/postsController"); // Tambahkan controller tambahPosts
 
-router.get("/", index)
+// Import express validator
+const { body } = require("express-validator");
 
-module.exports= router;
+router.get("/", index);
 
+router.post('/tambahPosts',
+    [
+        // Validasi
+        body('title').notEmpty(),
+        body('content').notEmpty()
+    ],
+    
+        // Panggil controller tambahPosts
+        tambahPosts
+    
+);
+
+router.get('/(:id)',tampilkanDetail );
+
+module.exports = router;
