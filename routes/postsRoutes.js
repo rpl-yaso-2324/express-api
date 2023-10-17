@@ -25,7 +25,6 @@ router.get('/', function (req, res) {
     });
 });
 
+router.get('/(:id)', tampilkanDetail);
+
 module.exports = router;
-
-
-;
