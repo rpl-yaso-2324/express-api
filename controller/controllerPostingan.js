@@ -91,9 +91,42 @@ function tampilkanDetail (req, res) {
     })
 }
 
+//function  updatePostingan
+function updatePostingan (req, res)  {
 
- 
+    const errors = validationResult(req);
 
-module.exports = {
-	index, tambahPostingan, tampilkanDetail
+    if (!errors.isEmpty()) {
+        return res.status(422).json({
+            errors: errors.array()
+        });
+    }
+
+    //id post
+    let id = req.params.id;
+
+    //data post
+    let formData = {
+        title: req.body.title,
+        content: req.body.content
+    }
+
+    // update query
+    connection.query(`UPDATE posts SET ? WHERE id = ${id}`, formData, function (err, rows) {
+        //if(err) throw err
+        if (err) {
+            return res.status(500).json({
+                status: false,
+                message: 'Internal Server Error',
+            })
+        } else {
+            return res.status(200).json({
+                status: true,
+                message: 'Update Data Successfully!'
+            })
+        }
+    })
+
 };
+
+module.exports = { index, tambahPostingan, tampilkanDetail, updatePostingan};
