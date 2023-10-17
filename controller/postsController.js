@@ -54,5 +54,4 @@ function tambahData(req, res) {
 
 };
 
-
 module.exports = { index, tambahData };

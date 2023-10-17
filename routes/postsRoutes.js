@@ -14,7 +14,7 @@ router.post(
    tambahData
 );
 
-
+router.get(("/id"),tampilkanDetail);
 
 
 
