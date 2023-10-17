@@ -15,8 +15,4 @@ connection.connect(function(error){
    }
  })
 
-<<<<<<< HEAD
-module.exports = connection; 
-=======
 module.exports = connection;
->>>>>>> 19dc3bb009bffbc1375a8ce3ced841fca097ce33
