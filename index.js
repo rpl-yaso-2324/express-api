@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 // import route posts
-const postsRouter = require('./routes/postsRoutes');
+const postsRouter = require('./routes/postsRouter');
 app.use('/api/posts', postsRouter);
 
 app.listen(port, () => {
