@@ -4,6 +4,8 @@ const connection = require("../config/database");
 //import express validator
 const {validationResult} = require('express-validator');
 
+//controller adalah kumpulan2 function yang akan dijalankan
+
 //function index posts
 const index = (req, res) => {
     //query
@@ -13,7 +15,6 @@ const index = (req, res) => {
             return res.status(500).json({
                 status: false,
                 message: 'Internal Server Error',
-                error: err,
             })
         } else {
             return res.status(200).json({
@@ -91,13 +92,13 @@ function tampilkanDetail(req, res) {
     })
 };
  
-const prosesUpdate = (req, res) => {
+const updatePostingan = (req, res) => {
 
-    const errors = validationResult(req);
+    const validationReq = validationResult(req);
 
-    if (!errors.isEmpty()) {
+    if (!validationReq.isEmpty()) {
         return res.status(422).json({
-            errors: errors.array()
+            errors: validationReq.array()
         });
     }
 
@@ -107,7 +108,7 @@ const prosesUpdate = (req, res) => {
     //data post
     let formData = {
         title: req.body.title,
-        content: req.body.content
+        content: req.body.content,
     }
 
     // update query
@@ -129,6 +130,6 @@ const prosesUpdate = (req, res) => {
 };
 
 module.exports = {
-	index, tambahPostingan, tampilkanDetail, prosesUpdate
+	index, tambahPostingan, tampilkanDetail, updatePostingan
 };
 
