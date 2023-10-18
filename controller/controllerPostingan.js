@@ -44,7 +44,7 @@ function tambahPostingan(req, res) {
 
 	// insert query
 	connection.query(
-		"INSERT INTO postingan SET ?",
+		"INSERT INTO posts SET ?",
 		formData,
 		function (err, rows) {
 			//if(err) throw err
