@@ -5,8 +5,8 @@ const { validationResult } = require("express-validator");
 
 const index = (req, res) => {
 	connection.query(
-		"SELECT * FROM postingan ORDER BY id desc",
-		function (err, rows) {
+		"SELECT * FROM posts ORDER BY id desc",
+		function  (err, rows) {
 			if (err) {
 				return res.status(500).json({
 					status: false,
@@ -43,9 +43,9 @@ const store = (req, res) => {
 
 	// insert query
 	connection.query(
-		"INSERT INTO postingan SET ?",
+		"INSERT INTO posts SET ?",
 		formData,
-		function (err, rows) {
+		function  (err, rows) {
 			//if(err) throw err
 			if (err) {
 				return res.status(500).json({
