@@ -16,8 +16,8 @@ router.post(
     ],
    tambahPostingan
    );
-   router.get("/(:id)", tampilkanDetail);
-   router.patch('/updatePostingan/(:id)', [
+router.get("/(:id)", tampilkanDetail);
+router.patch('/updatePostingan/(:id)', [
 
     //validation
     body('title').notEmpty(),
@@ -25,6 +25,6 @@ router.post(
 
 ],
 updatePostingan
-  );
+);
 
 module.exports = router;
