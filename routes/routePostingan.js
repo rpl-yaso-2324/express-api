@@ -1,19 +1,34 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const { index, tambahPostingan } = require("../controller/controllerPostingan");
+const { 
+	index,
+	tambahData,
+	tampilkanDetail,
+	updatePostingan,
+} = require("../controller/controllerPostingan")
+const { body } = require('express-validator');
 
-//import express validator
-const { body } = require("express-validator");
-
-router.get("/", index);
+router.get("/", index)
 router.post(
-	"/tambahPostingan",
+    "/tambahData",
+   [
+       // validation
+       body("tittle").notEmpty(),
+       body("content").notEmpty()
+   ],
+   tambahData
+);
+
+router.get("/(:id)", tampilkanDetail);
+router.patch(
+	"/updatePostingan/(:id)",
 	[
-		// validation
-		body("title").notEmpty(),
+		//validation
+		body("tittle").notEmpty(),
 		body("content").notEmpty(),
 	],
-	tambahPostingan
+	updatePostingan
 );
+
 
 module.exports = router;
