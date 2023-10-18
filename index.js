@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-//import route posts
+//import route postsn
 const routePostingan = require("./routes/routePostingan");
 app.use("/api/postingan", routePostingan); // use route posts di Express
 
