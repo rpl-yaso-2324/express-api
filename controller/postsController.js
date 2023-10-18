@@ -134,4 +134,25 @@ const updatePostingan = (req, res) => {
 	);
 }
 
-module.exports = { index, tambahPostingan, tampilkanDetail , updatePostingan };
+const deletePostingan = (req, res) => {
+
+    let id = req.params.id;
+
+    connection.query(`DELETE FROM posts WHERE id = ${id}`, function(err, rows) {
+        //if(err) throw err
+        if (err) {
+            return res.status(500).json({
+                status: false,
+                message: 'Internal Server Error',
+            })
+        } else {
+            return res.status(200).json({
+                status: true,
+                message: 'DELETE Data Successfully!',
+            })
+        }
+    })
+};
+
+
+module.exports = { index, tambahPostingan, tampilkanDetail , updatePostingan, deletePostingan };
