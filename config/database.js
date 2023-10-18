@@ -4,12 +4,12 @@ let connection = mysql.createConnection({
    host:        'localhost',
    user:        'root',
    password:    '',
-   database:    'db_express_api'
+   database:    'db_express_davin'
  });
 
 connection.connect(function(error){
    if(!!error){
-     console.log(error);
+     console.log(error, "lamun error poho ngaktifkeun XAMPP!!!");
    }else{
      console.log('Connection Succuessfully!');
    }
