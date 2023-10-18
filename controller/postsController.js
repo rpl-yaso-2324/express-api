@@ -60,7 +60,7 @@ const tambahPostingan = (req, res) => {
 				});
 			}
 		}
-	);
+	); 
 };
 
 const tampilkanDetail = (req, res) => {

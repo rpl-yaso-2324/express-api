@@ -13,7 +13,7 @@ router.post(
 		//validator
 		body("title").notEmpty(),
 		body("content").notEmpty(),
-	],
+	], 
 	tambahPostingan
 );
 router.get("/(:id)", tampilkanDetail);
