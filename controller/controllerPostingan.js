@@ -46,7 +46,7 @@ function tambahPostingan(req, res) {
 
     //insert query
     connection.query(
-		"INSERT INTO postingan SET ?",
+		"INSERT INTO posts SET ?",
 		formData,
 		function (err, rows) {
 			//if(err) throw err
@@ -70,7 +70,7 @@ function tampilkanDetail(req, res) {
 	let id = req.params.id;
 
 	connection.query(
-		`SELECT * FROM postingan WHERE id = ${id}`,
+		`SELECT * FROM posts WHERE id = ${id}`,
 		function (err, rows) {
 			if (err) {
 				return res.status(500).json({
@@ -118,7 +118,7 @@ function updatePostingan(req, res) {
 
 	// update query
 	connection.query(
-		`UPDATE postingan SET ? WHERE id = ${id}`,
+		`UPDATE posts SET ? WHERE id = ${id}`,
 		formData,
 		function (err, rows) {
 			//if(err) throw err
