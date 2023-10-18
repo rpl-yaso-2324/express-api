@@ -100,13 +100,13 @@ function updatePostingan(req, res) {
 
 	//data post
 	let formData = {
-		title: req.body.title,
+		tittle: req.body.tittle,
 		content: req.body.content,
 	};
 
 	// update query
 	connection.query(
-		`UPDATE postingan SET ? WHERE id = ${id}`,
+		`UPDATE posts SET ? WHERE id = ${id}`,
 		formData,
 		function (err, rows) {
 			//if(err) throw err
