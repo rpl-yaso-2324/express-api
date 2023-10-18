@@ -29,7 +29,6 @@ function index(req, res) {
 //function tambah postingan
 function tambahPostingan(req, res) {
 	const validationReq = validationResult(req);
-
 	if (!validationReq.isEmpty()) {
 		return res.status(422).json({
 			errors: validationReq.array(),
