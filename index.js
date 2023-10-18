@@ -1,21 +1,20 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = 4000;
 
 //import body parser
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 
-//parse aplication/x-www-from-urlencoded
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-//parse aplication/json
-app.use(bodyParser.json());
+// parse application/json
 
-// import route posts
-const postsRouter = require('./routes/postsRoutes');
-app.use('/api/posts', postsRouter);
-
+//import route posts
+const routePostingan = require("./routes/postRoutes");
+app.use("/api/postingan", routePostingan); // use route posts di Express
 
 app.listen(port, () => {
-	console.log(`app running at http://localhost:${port}`);
+	console.log(`si express berjalan di http://localhost:${port}`);
 });
