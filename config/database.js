@@ -11,8 +11,10 @@ connection.connect(function(error){
    if(!!error){
      console.log(error);
    }else{
-     console.log('Connection Succuessfully!');
+     console.log('koneksi sukses');
    }
  })
 
 module.exports = connection; 
+
+
