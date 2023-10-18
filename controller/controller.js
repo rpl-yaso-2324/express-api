@@ -1,42 +1,34 @@
-//require connection
-const connection = require("../config/database")
+const express = require("express");
+const router = express.Router();
+const {
+	index,
+	tambahPostingan,
+	tampilkanDetail,
+	updatePostingan,
+} = require("../controller/controllerPostingan");
 
-//function index posts
-const index = (req, res) => {
-    //query
-    connection.query('SELECT * FROM posts ORDER BY id desc', 
-    function (err, rows) {
-        if (err) {
-            return res.status(500).json({
-                status: false,
-                message: 'Internal Server Error',
-            })
-        } else {
-            return res.status(200).json({
-                status: true,
-                message: 'Insert Data Successfully',
-                data: rows
-            })
-        }
-    });
-}
+//import express validator
+const { body } = require("express-validator");
 
-const store = (req, res) => {
-    connection.query('SELECT * FROM buku ORDER BY id desc', 
-    function (err, rows) {
-        if (err) {
-            return res.status(500).json({
-                status: false,
-                message: 'Internal Server Error',
-            })
-        } else {
-            return res.status(200).json({
-                status: true,
-                message: 'Insert Data Successfully',
-                data: rows
-            })
-        }
-    });
-}
+router.get("/", index);
+router.post(
+	"/tambahPostingan",
+	[
+		// validation
+		body("title").notEmpty(),
+		body("content").notEmpty(),
+	],
+	tambahPostingan
+);
+router.get("/(:id)", tampilkanDetail);
+router.patch(
+	"/updatePostingan/(:id)",
+	[
+		//validation
+		body("title").notEmpty(),
+		body("content").notEmpty(),
+	],
+	updatePostingan
+);
 
-module.exports = { index, store };
+module.exports = router;
