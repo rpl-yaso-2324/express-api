@@ -15,5 +15,5 @@ const postsRouter = require('./routes/postsRoutes');
 app.use('/posts', postsRouter); 
 
 app.listen(port, () => {
-	console.log(`app running at http://localhost:${port}`);
+	console.log(`tghe bluetooth is ready to pair http://localhost:${port}`);
 });

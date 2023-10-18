@@ -3,7 +3,7 @@ const { validationResult } = require('express-validator');
 
 const index = ('/', function (req, res) {
     //query
-    connection.query('SELECT * FROM posts ORDER BY id desc', function (err, rows) {
+    connection.query('SELECT * FROM posts ORDER BY id asc', function (err, rows) {
         if (err) {
             return res.status(500).json({
                 status: false,
@@ -19,21 +19,21 @@ const index = ('/', function (req, res) {
     });
 });
 
-function tambahData(req, res) {
+function tambahData(req, res)  {
 
     const validationReq = validationResult(req);
 
-    if (!errors.isEmpty()) {
+    if (!validationReq.isEmpty()) {
         return res.status(422).json({
-            errors: errors.array()
+            errors: validationReq.array(),
         });
     }
 
     //define formData
     let formData = {
-        title: req.body.title,
-        content: req.body.content
-    }
+        tittle: req.body.tittle,
+        content: req.body.content,
+    };
 
     // insert query
     connection.query('INSERT INTO posts SET ?', formData, function (err, rows) {
@@ -54,4 +54,75 @@ function tambahData(req, res) {
 
 };
 
-module.exports = { index, tambahData };
+function tampilkanDetail(req, res) {
+	let id = req.params.id;
+
+	connection.query(
+		`SELECT * FROM postingan WHERE id = ${id}`,
+		function (err, rows) {
+			if (err) {
+				return res.status(500).json({
+					status: false,
+					message: "Internal Server Error",
+				});
+			}
+
+			// if post not found
+			if (rows.length <= 0) {
+				return res.status(404).json({
+					status: false,
+					message: "Data Post Not Found!",
+				});
+			}
+			// if post found
+			else {
+				return res.status(200).json({
+					status: true,
+					message: "Detail Data Post",
+					data: rows[0],
+				});
+			}
+		}
+	);
+}
+
+function updatePostingan(req, res) {
+	const validationReq = validationResult(req);
+
+	if (!validationReq.isEmpty()) {
+		return res.status(422).json({
+			errors: validationReq.array(),
+		});
+	}
+
+	//id post
+	let id = req.params.id;
+
+	//data post
+	let formData = {
+		title: req.body.title,
+		content: req.body.content,
+	};
+
+	// update query
+	connection.query(
+		`UPDATE postingan SET ? WHERE id = ${id}`,
+		formData,
+		function (err, rows) {
+			//if(err) throw err
+			if (err) {
+				return res.status(500).json({
+					status: false,
+					message: "Internal Server Error",
+				});
+			} else {
+				return res.status(200).json({
+					status: true,
+					message: "Update Data Successfully!",
+				});
+			}
+		}
+	);
+}
+
+module.exports = { index, tambahData, tampilkanDetail, updatePostingan };
