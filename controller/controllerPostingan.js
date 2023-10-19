@@ -136,7 +136,7 @@ function updatePostingan(req, res) {
 	);
 }
 
-function deleteData(req, res) {
+function deletePostingan(req, res) {
 	let id = req.params.id;
 
 	connection.query(`DELETE FROM posts WHERE id = ${id}`, function(err) {
@@ -157,4 +157,4 @@ function deleteData(req, res) {
 
 
 module.exports = router;
-module.exports = { index, tambahPostingan, tampilkanDetail, updatePostingan, deleteData };
+module.exports = { index, tambahPostingan, tampilkanDetail, updatePostingan, deletePostingan };
