@@ -8,7 +8,7 @@ const { validationResult } = require("express-validator");
 function index(req, res) {
 	//query
 	connection.query(
-		"SELECT * FROM postingan ORDER BY id desc",
+		"SELECT * FROM posts ORDER BY id desc",
 		function (err, rows) {
 			if (err) {
 				return res.status(500).json({
@@ -43,7 +43,7 @@ function tambahPostingan(req, res) {
 
 	// insert query
 	connection.query(
-		"INSERT INTO postingan SET ?",
+		"INSERT INTO posts SET ?",
 		formData,
 		function (err, rows) {
 			//if(err) throw err
@@ -63,11 +63,12 @@ function tambahPostingan(req, res) {
 	);
 }
 
+
 function tampilkanDetail(req, res) {
 	let id = req.params.id;
 
 	connection.query(
-		`SELECT * FROM postingan WHERE id = ${id}`,
+		`SELECT * FROM posts WHERE id = ${id}`,
 		function (err, rows) {
 			if (err) {
 				return res.status(500).json({
@@ -114,7 +115,7 @@ function updatePostingan(req, res) {
 
 	// update query
 	connection.query(
-		`UPDATE postingan SET ? WHERE id = ${id}`,
+		`UPDATE posts SET ? WHERE id = ${id}`,
 		formData,
 		function (err, rows) {
 			//if(err) throw err
@@ -133,4 +134,24 @@ function updatePostingan(req, res) {
 	);
 }
 
-module.exports = { index, tambahPostingan, tampilkanDetail, updatePostingan };
+function deletePostingan(req, res) {
+
+	let id = req.params.id;
+
+	connection.query(`DELETE FROM posts WHERE id = ${id}`, function (err) {
+		//if(err) throw err
+		if (err) {
+			return res.status(500).json({
+				status: false,
+				message: 'Internal Server Error',
+			})
+		} else {
+			return res.status(200).json({
+				status: true,
+				message: 'Delete Data Successfully!',
+			})
+		}
+	})
+
+}
+module.exports = { index, tambahPostingan, tampilkanDetail, updatePostingan, deletePostingan };
