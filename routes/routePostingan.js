@@ -31,5 +31,5 @@ router.patch(
     ],
     updatePostingan
 );
-
+router.delete(/deletePostingan/(:id), deletePostingan)
 module.exports =  router;
