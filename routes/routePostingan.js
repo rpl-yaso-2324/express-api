@@ -7,7 +7,7 @@ const {
 	updatePostingan,
 } = require("../controller/controllerPostingan");
 
-//import express validator
+//import express validator    
 const { body } = require("express-validator");
 
 router.get("/", index);

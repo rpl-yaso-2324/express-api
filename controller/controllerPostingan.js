@@ -4,7 +4,7 @@ const connection = require("../config/database");
 //import express validator
 const { validationResult } = require("express-validator");
 
-//function index postingan
+//function index postingan    
 function index(req, res) {
 	//query
 	connection.query(
