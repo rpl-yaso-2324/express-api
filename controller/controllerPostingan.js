@@ -1,8 +1,8 @@
 //requeri connection
-const conection = require ("../config/database");
+const connection = require ("../config/database");
 
 //import express validator
-const { body, validationResult } = require('express-validator'); 
+const {validationResult } = require('express-validator'); 
 
 //function index posts
 function index  (req , res ) {
@@ -21,8 +21,6 @@ function index  (req , res ) {
         });
       }
      });
-};
-
 
 //function tambah postingan
 function index  (req , res ) {

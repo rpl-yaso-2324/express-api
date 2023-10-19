@@ -1,6 +1,11 @@
 const express  = require('express');
 const router = express.Router();
-const {index} = require ("../controller/controllerPostingan.js");
+const {
+        index,
+        tambahPostingan,
+        tampilkanDetail,
+        updatePostingan,
+    }=require("../controller/controllerPostingan");
 
 
 //import express validator
@@ -17,6 +22,14 @@ body('content'),notEmpty(),
 ],
 tambahPostingan
 );
-router.get("/:id"),
-
+router.get("/:id", tampilkanDetail);
+router.patch(
+	"/updatePostingan/(:id)",
+	[
+		//validation
+		body("title").notEmpty(),
+		body("content").notEmpty(),
+	],
+	updatePostingan
+);
 module.exports =  router;
