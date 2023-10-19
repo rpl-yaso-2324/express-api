@@ -4,7 +4,7 @@ const connection = require("../config/database");
 //import express validator
 const {validationResult} = require('express-validator');
 
-//controller adalah kumpulan2 function yang akan dijalankan
+//controller adalah kumpulan2 function yang akan di jalankan
 
 //function index posts
 const index = (req, res) => {
@@ -26,7 +26,7 @@ const index = (req, res) => {
     });
 };
 
-//function tambah postingan
+//function tambahkan postingan
 const tambahPostingan = (req, res) => {
     const errors = validationResult(req);
 
@@ -129,7 +129,27 @@ const updatePostingan = (req, res) => {
 
 };
 
+function deleteData(req, res) {
+
+    let id = req.params.id;
+     
+    connection.query(`DELETE FROM postingan WHERE id = ${id}`, function(err, rows) {
+        //if err throw err
+        if (err) {
+            return res.status(500).json({
+                status: false,
+                message: 'Internal Server Error',
+            })
+        } else {
+            return res.status(200).json({
+                status: true,
+                message: 'Delete Data Successfully!',
+            })
+        }
+    })
+};
+
 module.exports = {
-	index, tambahPostingan, tampilkanDetail, updatePostingan
+	index, tambahPostingan, tampilkanDetail, updatePostingan, deleteData
 };
 
