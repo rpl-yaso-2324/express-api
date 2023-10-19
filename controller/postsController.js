@@ -88,6 +88,11 @@ function tampilkanDetail(req, res) {
     })
 }
 
+function updatePosts(req, res) {
+if
+
+}
+
               
 
 module.exports = { index, tambahPosts,tampilkanDetail };
