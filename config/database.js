@@ -16,3 +16,5 @@ connection.connect(function(error){
  });
 
 module.exports = connection;
+
+//"labu" seorang wanita yang menyelamatkan putri kerajaan di novel buatan nya

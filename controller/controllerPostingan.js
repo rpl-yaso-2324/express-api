@@ -66,6 +66,7 @@ function tambahPostingan(req, res) {
 	);
 }
 
+//function tampilkan detail
 function tampilkanDetail(req, res) {
 	let id = req.params.id;
 
@@ -98,6 +99,7 @@ function tampilkanDetail(req, res) {
 	);
 }
 
+//function update postingan
 function updatePostingan(req, res) {
 	const validationReq = validationResult(req);
 
@@ -137,4 +139,26 @@ function updatePostingan(req, res) {
 	);
 }
 
-module.exports = { index, tambahPostingan, tampilkanDetail, updatePostingan };
+//function delete postingan
+function deletePostingan(req, res) {
+
+		let id = req.params.id;
+		 
+		connection.query(`DELETE FROM posts WHERE id = ${id}`, function(err, rows) {
+			//if(err) throw err
+			if (err) {
+				return res.status(500).json({
+					status: false,
+					message: 'Internal Server Error',
+				})
+			} else {
+				return res.status(200).json({
+					status: true,
+					message: 'Delete Data Successfully!',
+				})
+			}
+		})
+	};
+
+
+module.exports = { index, tambahPostingan, tampilkanDetail, updatePostingan, deletePostingan };
