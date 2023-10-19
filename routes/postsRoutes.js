@@ -5,6 +5,7 @@ const {
 	tambahData,
 	tampilkanDetail,
 	updatePostingan,
+	deletePostingan,
 } = require("../controller/postsController")
 const { body } = require('express-validator');
 
@@ -29,6 +30,10 @@ router.patch(
 	],
 	updatePostingan
 );
+
+router.delete("/deletePostingan/(:id)", deletePostingan);
+
+
 
 
 

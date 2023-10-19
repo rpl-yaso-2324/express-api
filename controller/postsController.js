@@ -19,7 +19,7 @@ const index = ('/', function (req, res) {
     });
 });
 
-function tambahData(req, res)  {
+function tambahData(req, res) {
 
     const validationReq = validationResult(req);
 
@@ -125,4 +125,24 @@ function updatePostingan(req, res) {
 	);
 }
 
-module.exports = { index, tambahData, tampilkanDetail, updatePostingan };
+function deletePostingan(req, res) {
+
+    let id = req.params.id;
+     
+    connection.query(`DELETE FROM posts WHERE id = ${id}`, function(err) {
+        //if(err) throw err
+        if (err) {
+            return res.status(500).json({
+                status: false,
+                message: 'Internal Server Error',
+            })
+        } else {
+            return res.status(200).json({
+                status: true,
+                message: 'data berhasil dihapus',
+            })
+        }
+	})
+}
+
+module.exports = { index, tambahData, tampilkanDetail, updatePostingan, deletePostingan};

@@ -11,6 +11,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+//import library CORS
+const cors = require('cors')
+
+//use cors
+app.use(cors())
+
 const postsRouter = require('./routes/postsRoutes');
 app.use('/posts', postsRouter); 
 
