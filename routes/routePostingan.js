@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {index, tambahPostingan, tampilkanDetail,updatePostingan} = require("../controller/controllerPostingan")
+const {index, tambahPostingan, tampilkanDetail,updatePostingan, deleteData} = require("../controller/controllerPostingan")
 
 //import express validator
 const {body} = require("express-validator");
@@ -26,5 +26,6 @@ router.patch('/updatePostingan/(:id)', [
 ],
 updatePostingan
 );
+router.delete('/delete/(:id)', deleteData);
 
 module.exports = router;
