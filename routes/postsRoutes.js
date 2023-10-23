@@ -26,5 +26,6 @@ router.get('/', function (req, res) {
 });
 
 router.get('/(:id)', tampilkanDetail);
+router.delete('/deletePotsingan/(:id)', deletePostingan);
 
 module.exports = router;
