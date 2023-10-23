@@ -1,63 +1,16 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const { index, tambahPostingan } = require("../controller/controllerPostingan");
+const {
+	index,
+	tambahPostingan,
+	tampilkanDetail,
+	updatePostingan,
+	deletePostingan,
+} = require("../controller/postsController");
 
 //import express validator
-const { body, validationResult } = require('express-validator');
+const { body } = require("express-validator");
 
-//import database
-const connection = require('../config/database');
-
-/**
- * INDEX POSTS
- */
-router.get('/', function (req, res) {
-//query
-connection.query('SELECT * FROM posts ORDER BY id desc', function (err, rows) {
-if (err) {
-	return res.status(500).json({
-		status: false,
-		message: 'Internal Server Error',
-	})
-} else {
-	return res.status(200).json({
-status: true,
-message: 'List Data Posts',
-data: rows
-	})
-}
-	});
-});
-
-/**
- * STORE POST
- */
-router.post('/store', [
-
-	//validation
-	body('title').notEmpty(),
-	body('content').notEmpty()
-
-], (req, res) => {
-
-	const errors = validationResult(req);
-
-	if (!errors.isEmpty()) {
-		return res.status(422).json({
-			errors: errors.array()
-		});
-		}
-	
-		//define formData
-		let formData = {
-			title: req.body.title,
-			content: req.body.content
-		}
-
-		// insert query
-		connection.query('INSERT INTO posts SET ?', formData, function (err, rows) {
-			
-		}
 router.get("/", index);
 router.post(
 	"/tambahPostingan",
@@ -68,5 +21,16 @@ router.post(
 	],
 	tambahPostingan
 );
+router.get("/(:id)", tampilkanDetail);
+router.patch(
+	"/updatePostingan/(:id)",
+	[
+		//validation
+		body("title").notEmpty(),
+		body("content").notEmpty(),
+	],
+	updatePostingan
+);
+router.delete("/deletePostingan/(:id)", deletePostingan);
 
 module.exports = router;
