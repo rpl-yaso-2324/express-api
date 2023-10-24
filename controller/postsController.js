@@ -89,7 +89,7 @@ function tampilkanDetail(req, res) {
 }
 
 function updatePosts(req, res) {
-if
+
 
 }
 
