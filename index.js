@@ -5,7 +5,7 @@ const port = 3000;
 //import body parser
 const bodyParser = require("body-parser");
 
-// parse application/x-www-form-urlencoded
+// parse application/x-www-form urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
