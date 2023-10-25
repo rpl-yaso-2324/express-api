@@ -1,31 +1,36 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const {index, tambahPostingan, tampilkanDetail,updatePostingan, deleteData} = require("../controller/controllerPostingan")
+const {
+	index,
+	tambahPostingan,
+	tampilkanDetail,
+	updatePostingan,
+	deletePostingan,
+} = require("../controller/controllerPostingan");
 
 //import express validator
-const {body} = require("express-validator");
+const { body } = require("express-validator");
 
-//route digunakan untuk jalur atau rute yang digunakan untuk mencapai tujuan tertentu. 
-router.get("/",index);
+router.get("/", index);
 router.post(
-    "/tambahPostingan",
-    [
-        //validation
-        body('title').notEmpty(),
-        body('content').notEmpty(),
-    ],
-   tambahPostingan
-   );
-router.get("/(:id)", tampilkanDetail);
-router.patch('/updatePostingan/(:id)', [
-
-    //validation
-    body('title').notEmpty(),
-    body('content').notEmpty()
-
-],
-updatePostingan
+	"/tambahPostingan",
+	[
+		// validation
+		body("title").notEmpty(),
+		body("content").notEmpty(),
+	],
+	tambahPostingan
 );
-router.delete('/delete/(:id)', deleteData);
+router.get("/(:id)", tampilkanDetail);
+router.patch(
+	"/updatePostingan/(:id)",
+	[
+		//validation
+		body("title").notEmpty(),
+		body("content").notEmpty(),
+	],
+	updatePostingan
+);
+router.delete("/deletePostingan/(:id)", deletePostingan);
 
 module.exports = router;
