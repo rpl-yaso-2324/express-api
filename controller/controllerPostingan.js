@@ -7,7 +7,7 @@ const {validationResult} = require('express-validator');
 //function index posts
 const index = (req, res) => {
     //query
-    connection.query('SELECT * FROM postingan ORDER BY id desc',
+    connection.query('SELECT * FROM posts ORDER BY id desc',
     function (err, rows) {
         if (err) {
             return res.status(500).json({
@@ -42,7 +42,7 @@ const tambahPostingan = (req, res) => {
 }
 
 // insert query
-connection.query('INSERT INTO postingan SET ?', formData, function (err, rows) {
+connection.query('INSERT INTO posts SET ?', formData, function (err, rows) {
     //if(err) throw err
     if (err) {
         return res.status(500).json({
@@ -64,7 +64,7 @@ function tampilkanDetail (req, res) {
 
     let id = req.params.id;
 
-    connection.query(`SELECT * FROM postingan WHERE id = ${id}`, function (err, rows) {
+    connection.query(`SELECT * FROM posts WHERE id = ${id}`, function (err, rows) {
 
         if (err) {
             return res.status(500).json({
@@ -112,7 +112,7 @@ function updatePostingan (req, res)  {
     }
 
     // update query
-    connection.query(`UPDATE postingan SET ? WHERE id = ${id}`, formData, function (err, rows) {
+    connection.query(`UPDATE posts SET ? WHERE id = ${id}`, formData, function (err, rows) {
         //if(err) throw err
         if (err) {
             return res.status(500).json({
