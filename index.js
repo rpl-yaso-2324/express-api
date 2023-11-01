@@ -2,6 +2,10 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
+const cors = require('cors')
+
+app.use(cors())
+
 //import body parser
 const bodyParser = require("body-parser");
 
@@ -16,5 +20,5 @@ const routePostingan = require("./routes/routePostingan");
 app.use("/api/postingan", routePostingan); // use route posts di Express
 
 app.listen(port, () => {
-	console.log(`express nya berjalan di jalan http://localhost:${port}`);
+	console.log(`express nya berjalan di jalan inii http://localhost:${port}`);
 });

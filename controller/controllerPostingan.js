@@ -58,7 +58,7 @@ function tambahPostingan(req, res) {
 			} else {
 				return res.status(201).json({
 					status: true,
-					message: "Insert Data Successfully",
+					message: "ditambah berjaya!",
 					data: rows[0],
 				});
 			}
@@ -132,7 +132,7 @@ function updatePostingan(req, res) {
 			} else {
 				return res.status(200).json({
 					status: true,
-					message: "Update Data Successfully!",
+					message: "Update tiasa",
 				});
 			}
 		}
@@ -154,11 +154,10 @@ function deletePostingan(req, res) {
 			} else {
 				return res.status(200).json({
 					status: true,
-					message: 'Delete Data Successfully!',
+					message: 'ngehapus nya sukses ges!!',
 				})
 			}
 		})
 	};
-
 
 module.exports = { index, tambahPostingan, tampilkanDetail, updatePostingan, deletePostingan };
