@@ -1,28 +1,27 @@
-const express  = require('express');
+const express = require("express");
 const router = express.Router();
 const {
-        index,
-        tambahPostingan,
-        tampilkanDetail,
-        updatePostingan,
-    }=require("../controller/controllerPostingan");
-
+	index,
+	tambahPostingan,
+	tampilkanDetail,
+	updatePostingan,
+	deletePostingan,
+} = require("../controller/controllerPostingan");
 
 //import express validator
-const { body, validationResult } = require('express-validator');
-
+const { body } = require("express-validator");
 
 router.get("/", index);
 router.post(
-    "/tambahPostingan",
-[
-//validation
-body('title'),notEmpty(),
-body('content'),notEmpty(),
-],
-tambahPostingan
+	"/tambahPostingan",
+	[
+		// validation
+		body("title").notEmpty(),
+		body("content").notEmpty(),
+	],
+	tambahPostingan
 );
-router.get("/:id", tampilkanDetail);
+router.get("/(:id)", tampilkanDetail);
 router.patch(
 	"/updatePostingan/(:id)",
 	[
@@ -32,4 +31,6 @@ router.patch(
 	],
 	updatePostingan
 );
-module.exports =  router;
+router.delete("/deletePostingan/(:id)", deletePostingan);
+
+module.exports = router;
