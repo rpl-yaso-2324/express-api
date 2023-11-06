@@ -9,7 +9,7 @@ const { validationResult } = require("express-validator");
 function index(req, res) {
 	//query
 	connection.query(
-		"SELECT * FROM posts ORDER BY id desc",
+		"SELECT * FROM posts ORDER BY id asc",
 		function (err, rows) {
 			if (err) {
 				return res.status(500).json({
@@ -137,7 +137,7 @@ function updatePostingan(req, res) {
 }
 
 //DELETE POST
-router.delete('/delete/(:id)', function(req, res) {
+function deletePostingan(req, res) {
 
    let id = req.params.id;
 	
@@ -155,7 +155,6 @@ router.delete('/delete/(:id)', function(req, res) {
 		   })
 	   }
    })
-});
+};
 
-module.exports = router;
 module.exports = { index, tambahPostingan, tampilkanDetail, updatePostingan, deletePostingan };

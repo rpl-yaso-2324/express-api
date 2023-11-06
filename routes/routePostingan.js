@@ -5,6 +5,7 @@ const {
 	tambahPostingan,
 	tampilkanDetail,
 	updatePostingan,
+	deletePostingan,
 } = require("../controler/controllerPostingan");
 
 //import express validator
@@ -30,5 +31,5 @@ router.patch(
 	],
 	updatePostingan
 );
-
+router.delete("/delete/(:id)", deletePostingan);
 module.exports = router;

@@ -3,7 +3,7 @@ let connection = mysql.createConnection({
   host:        'localhost',
   user:        'root',
   password:    '',
-  database:    'db_express_api'
+  database:    'db_express_rafi'
 });
 
 connection.connect(function(error){
