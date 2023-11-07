@@ -5,6 +5,7 @@ const {
 	tambahData,
 	tampilkanDetail,
 	updatePostingan,
+	deletePostingan,
 } = require("../controller/controllerPostingan")
 const { body } = require('express-validator');
 
@@ -13,7 +14,7 @@ router.post(
     "/tambahData",
    [
        // validation
-       body("tittle").notEmpty(),
+       body("title").notEmpty(),
        body("content").notEmpty()
    ],
    tambahData
@@ -24,11 +25,12 @@ router.patch(
 	"/updatePostingan/(:id)",
 	[
 		//validation
-		body("tittle").notEmpty(),
+		body("title").notEmpty(),
 		body("content").notEmpty(),
 	],
 	updatePostingan
 );
 
+router.delete('/deletePostingan/(:id)', deletePostingan)
 
 module.exports = router;

@@ -125,4 +125,25 @@ function updatePostingan(req, res) {
 	);
 }
 
-module.exports = { index, tambahData, tampilkanDetail, updatePostingan };
+function deletePostingan(req, res) {
+
+	let id = req.params.id;
+
+	connection.query(`DELETE FROM posts WHERE id = ${id}`, function (err) {
+		//if(err) throw err
+		if (err) {
+			return res.status(500).json({
+				status: false,
+				message: 'Internal Server Error',
+			})
+		} else {
+			return res.status(200).json({
+				status: true,
+				message: 'Delete Data Successfully!',
+			})
+		}
+	})
+
+}
+
+module.exports = { index, tambahData, tampilkanDetail, updatePostingan, deletePostingan };
