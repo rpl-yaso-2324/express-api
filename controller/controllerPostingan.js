@@ -13,7 +13,7 @@ const index = ('/', function (req, res) {
             return res.status(200).json({
                 status: true,
                 message: 'List Data Posts',
-                data: rows
+                data: rows,
             })
         }
     });
@@ -31,7 +31,7 @@ function tambahData(req, res)  {
 
     //define formData
     let formData = {
-        tittle: req.body.tittle,
+        title: req.body.title,
         content: req.body.content,
     };
 
